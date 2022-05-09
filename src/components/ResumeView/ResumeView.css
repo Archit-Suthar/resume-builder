@@ -1,0 +1,19 @@
+.header {
+  font-size: 24px;
+  font-weight: bold;
+}
+.name {
+  font-size: 30px;
+}
+hr {
+  margin: 10px 0px;
+}
+a {
+  text-decoration: none;
+}
+.normalFont {
+  font-size: 18px;
+}
+.contentDiv {
+  margin: 5px 20px 5px 20px;
+}
