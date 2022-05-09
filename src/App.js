@@ -21,7 +21,6 @@ function App() {
     <div className="App">
       <Header />
       <Home />
-      {/* <ResumeContext.Provider value={{ resume, setResume }}> */}
       <Grid container>
         <Grid item xs={12} lg={6}>
           <h1 style={{ marginLeft: "30px" }}>Resume Form</h1>
@@ -40,7 +39,6 @@ function App() {
         documentTitle="MyResume"
         pageStyle="print"
       />
-      {/* </ResumeContext.Provider> */}
     </div>
   );
 }
