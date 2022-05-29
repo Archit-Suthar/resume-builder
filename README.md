@@ -1,3 +1,18 @@
+Packages used : 
+
+- "@material-ui/core": "^4.12.4",
+- "@material-ui/icons": "^4.11.3",
+- "react-to-print": "^2.14.7",
+
+ScreenShots:
+![Screenshot (125)](https://user-images.githubusercontent.com/63463921/167429524-b3b63103-e64e-42df-9a89-323e5ccbcca5.png)
+![Screenshot (126)](https://user-images.githubusercontent.com/63463921/167429532-24a6cd64-344f-4883-a16f-fe159597cc75.png)
+![Screenshot (127)](https://user-images.githubusercontent.com/63463921/167429546-8c191dbb-2a69-4c68-8612-1a8ae0bc971d.png)
+![Screenshot (128)](https://user-images.githubusercontent.com/63463921/167429469-f1d34ad2-9811-4385-9714-a336c8bd5d58.png)
+ 
+Demo Resume : 
+[DemoResume.pdf](https://github.com/Archit-Suthar/resume-builder/files/8652499/DemoResume.pdf)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
