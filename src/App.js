@@ -1,44 +1,50 @@
-import { useRef, useState } from "react";
-import { Container, Grid, Button } from "@material-ui/core";
-import Header from "./components/Home/Header";
-import Home from "./components/Home/Home";
+import { useRef } from "react";
+import { Grid, Button } from "@material-ui/core";
+import InfoHeader from "./components/Home/InfoHeader";
+import InfoBody from "./components/Home/InfoBody";
 import ResumeForm from "./components/ResumeForm/ResumeForm";
 import ResumeView from "./components/ResumeView/ResumeView";
 import "./App.css";
 import ReactToPrint from "react-to-print";
 
 function App() {
-  const [resume, setResume] = useState({
-    basicInfo: {},
-    education: {},
-    experience: {},
-    skills: [],
-    achievements: "",
-    projects: {},
-  });
   let componentRef = useRef();
   return (
     <div className="App">
-      <Header />
-      <Home />
-      <Grid container>
-        <Grid item xs={12} lg={6}>
-          <h1 style={{ marginLeft: "30px" }}>Resume Form</h1>
-          <ResumeForm resume={resume} setResume={setResume} />
-        </Grid>
-        <Grid item xs={12} lg={6}>
-          <h1>ResumeView</h1>
-          <div ref={(el) => (componentRef = el)}>
-            <ResumeView resume={resume} />
+      {/* top-section */}
+      <div className="topSection">
+        <InfoHeader />
+        <InfoBody />
+      </div>
+      {/*  */}
+
+      {/* resume form + Print Button */}
+      <div id="ResumeForm" className="formDiv">
+        <span className="posCenter headerText">Resume Form</span>
+        <ResumeForm />
+        <div className="printBtn posCenter">
+          <ReactToPrint
+            trigger={() => <Button variant="contained">Print this out!</Button>}
+            content={() => componentRef}
+            documentTitle="MyResume"
+            pageStyle="print"
+          />
+        </div>
+      </div>
+      {/*  */}
+
+      {/* view of the resume  */}
+      <div>
+        <span className="posCenter headerText">ResumeView</span>
+        <div className="resumeView">
+          <div className="shadow">
+            <div ref={(el) => (componentRef = el)}>
+              <ResumeView />
+            </div>
           </div>
-        </Grid>
-      </Grid>
-      <ReactToPrint
-        trigger={() => <Button variant="contained">Print this out!</Button>}
-        content={() => componentRef}
-        documentTitle="MyResume"
-        pageStyle="print"
-      />
+        </div>
+      </div>
+      {/*  */}
     </div>
   );
 }

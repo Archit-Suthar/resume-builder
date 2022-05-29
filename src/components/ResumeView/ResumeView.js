@@ -2,16 +2,20 @@ import { Grid } from "@material-ui/core";
 import React from "react";
 import "./ResumeView.css";
 import LinkedInicon from "@material-ui/icons/LinkedIn";
-const ResumeView = ({ resume }) => {
+import { useSelector } from "react-redux";
+import { selectResume } from "../../features/setResumeSlice";
+
+const ResumeView = () => {
+  const resume = useSelector(selectResume);
+  // console.log(resume);
   return (
-    <div className="resumeView">
-      <div className="normalFont contentDiv floater">
-        <div>
-          <div className="header name">{resume.basicInfo.fullname}</div>
-          <div className="title">{resume.basicInfo.title}</div>
+    <div>
+      <div className="normalFont">
+        <div className="header name posCenter">{resume.basicInfo.fullname}</div>
+        <div className="title posCenter">{resume.basicInfo.title}</div>
+        <div className="contentDiv floater">
           <div className="mno">{resume.basicInfo.mno}</div>
-        </div>
-        <div>
+
           <div className="github">Github</div>
           <a href={resume.basicInfo.linked} className="llink">
             LinkedIn
@@ -58,7 +62,6 @@ const ResumeView = ({ resume }) => {
       <div className="skills">
         <h2>Skills</h2>
         <Grid container className="normalFont contentDiv">
-          {console.log(resume.skills)}
           {resume.skills?.map((skill) => (
             <Grid key={skill} item xs={6}>
               {skill}

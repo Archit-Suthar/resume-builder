@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import "./topSection.css";
 import { Container, Grid, Typography } from "@material-ui/core";
 
 const Home = () => {
@@ -23,16 +23,24 @@ const Home = () => {
         </Typography>
         <Grid container justifyContent="space-between">
           <Grid item xs={12} sm={6} md={3}>
-            <img src="./assets/resumeDemo1.png" width="240px" />
+            <div className="imgDiv">
+              <img src="./assets/resumeDemo1.png" width="240px" />
+            </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <img src="./assets/resumeDemo2.jfif" width="240px" />
+            <div className="imgDiv">
+              <img src="./assets/resumeDemo2.jfif" width="240px" />
+            </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <img src="./assets/resumeDemo1.png" width="240px" />
+            <div className="imgDiv">
+              <img src="./assets/resumeDemo1.png" width="240px" />
+            </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <img src="./assets/resumeDemo2.jfif" width="240px" />
+            <div className="imgDiv">
+              <img src="./assets/resumeDemo2.jfif" width="240px" />
+            </div>
           </Grid>
         </Grid>
       </Container>
