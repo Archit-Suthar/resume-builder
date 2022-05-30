@@ -1,17 +1,18 @@
 Packages used : 
 
+- "@reduxjs/toolkit": "^1.8.2",
 - "@material-ui/core": "^4.12.4",
 - "@material-ui/icons": "^4.11.3",
 - "react-to-print": "^2.14.7",
 
 ScreenShots:
-![Screenshot (125)](https://user-images.githubusercontent.com/63463921/167429524-b3b63103-e64e-42df-9a89-323e5ccbcca5.png)
-![Screenshot (126)](https://user-images.githubusercontent.com/63463921/167429532-24a6cd64-344f-4883-a16f-fe159597cc75.png)
-![Screenshot (127)](https://user-images.githubusercontent.com/63463921/167429546-8c191dbb-2a69-4c68-8612-1a8ae0bc971d.png)
-![Screenshot (128)](https://user-images.githubusercontent.com/63463921/167429469-f1d34ad2-9811-4385-9714-a336c8bd5d58.png)
- 
+![Screenshot (145)](https://user-images.githubusercontent.com/63463921/170883407-24e0b9bd-ab9c-4b89-b2c3-21f86aa229d0.png)
+![Screenshot (146)](https://user-images.githubusercontent.com/63463921/170883405-dd544561-cbb9-41e1-994c-b02063d79d50.png)
+![Screenshot (147)](https://user-images.githubusercontent.com/63463921/170883403-31be2a39-960e-4a68-8e23-eed55adbeaf6.png)
+![Screenshot (148)](https://user-images.githubusercontent.com/63463921/170883398-3d1bea21-afff-4117-a77c-b20815f8b992.png)
+
 Demo Resume : 
-[DemoResume.pdf](https://github.com/Archit-Suthar/resume-builder/files/8652499/DemoResume.pdf)
+[DemoResume.pdf](https://github.com/Archit-Suthar/resume-builder/files/8793902/DemoResume.pdf)
 
 # Getting Started with Create React App
 
