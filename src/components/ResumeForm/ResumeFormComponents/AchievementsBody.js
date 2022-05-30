@@ -1,11 +1,19 @@
 import { Button, Container, Grid } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setAchievements } from "../../../features/setResumeSlice";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectResume,
+  setAchievements,
+} from "../../../features/setResumeSlice";
 
 export const AchievementsBody = ({ step, setStep }) => {
   const dispatch = useDispatch();
+  const resume = useSelector(selectResume);
+
+  useEffect(() => {
+    setInfo(resume.achievements);
+  }, []);
 
   const [Info, setInfo] = useState("");
 

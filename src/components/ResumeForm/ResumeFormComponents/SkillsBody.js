@@ -1,11 +1,16 @@
 import { Button, Container, Grid } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setSkills } from "../../../features/setResumeSlice";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectResume, setSkills } from "../../../features/setResumeSlice";
 
 export const SkillsBody = ({ step, setStep }) => {
   const dispatch = useDispatch();
+  const resume = useSelector(selectResume);
+
+  useEffect(() => {
+    setInfo(resume.skills);
+  }, []);
 
   const [input, setInput] = useState("");
   const [Info, setInfo] = useState(["react"]);
@@ -16,6 +21,11 @@ export const SkillsBody = ({ step, setStep }) => {
   };
   const backStep = () => {
     setStep(step - 1);
+  };
+
+  const handleAddSkill = () => {
+    setInfo([...Info, input]);
+    setInput("");
   };
 
   return (
@@ -68,7 +78,7 @@ export const SkillsBody = ({ step, setStep }) => {
         <Button
           variant="outlined"
           color="primary"
-          onClick={() => setInfo([...Info, input])}
+          onClick={handleAddSkill}
           disabled={input.length === 0}
         >
           + Add Skill

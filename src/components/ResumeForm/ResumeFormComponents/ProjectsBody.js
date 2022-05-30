@@ -1,11 +1,16 @@
 import { Button, Container, Grid } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setProjects } from "../../../features/setResumeSlice";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectResume, setProjects } from "../../../features/setResumeSlice";
 
 export const ProjectsBody = ({ step, setStep }) => {
   const dispatch = useDispatch();
+  const resume = useSelector(selectResume);
+
+  useEffect(() => {
+    setInfo(resume.projects);
+  }, []);
 
   const [Info, setInfo] = useState({
     projTitle: "",

@@ -1,11 +1,16 @@
 import { Button, Container, Grid } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setBasicInfo } from "../../../features/setResumeSlice";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectResume, setBasicInfo } from "../../../features/setResumeSlice";
 
 export const BasicInfoBody = ({ step, setStep }) => {
   const dispatch = useDispatch();
+  const resume = useSelector(selectResume);
+
+  useEffect(() => {
+    setInfo(resume.basicInfo);
+  }, []);
 
   const [Info, setInfo] = useState({
     fullname: "",
@@ -41,7 +46,7 @@ export const BasicInfoBody = ({ step, setStep }) => {
               color="primary"
               fullWidth
               focused
-              value={Info.fullname}
+              value={resume.basicInfo.fullname}
               onChange={onInputChange}
             />
           </Grid>
@@ -53,7 +58,7 @@ export const BasicInfoBody = ({ step, setStep }) => {
               color="primary"
               fullWidth
               focused
-              value={Info.mno}
+              value={resume.basicInfo.mno}
               onChange={onInputChange}
             />
           </Grid>
@@ -66,7 +71,7 @@ export const BasicInfoBody = ({ step, setStep }) => {
               color="primary"
               fullWidth
               focused
-              value={Info.title}
+              value={resume.basicInfo.title}
               onChange={onInputChange}
             />
           </Grid>
@@ -79,7 +84,7 @@ export const BasicInfoBody = ({ step, setStep }) => {
               color="primary"
               fullWidth
               focused
-              value={Info.email}
+              value={resume.basicInfo.email}
               onChange={onInputChange}
             />
           </Grid>
@@ -92,7 +97,7 @@ export const BasicInfoBody = ({ step, setStep }) => {
               color="primary"
               fullWidth
               focused
-              value={Info.linked}
+              value={resume.basicInfo.linked}
               onChange={onInputChange}
             />
           </Grid>
@@ -104,7 +109,7 @@ export const BasicInfoBody = ({ step, setStep }) => {
               color="primary"
               fullWidth
               focused
-              value={Info.about}
+              value={resume.basicInfo.about}
               onChange={onInputChange}
             />
           </Grid>

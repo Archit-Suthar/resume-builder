@@ -19,7 +19,7 @@ const ResumeView = () => {
           <div className="github">Github</div>
           <a href={resume.basicInfo.linked} className="llink">
             LinkedIn
-            {<LinkedInicon />}
+            {/* {<LinkedInicon />} */}
           </a>
           <div className="email">{resume.basicInfo.email}</div>
         </div>
@@ -27,12 +27,7 @@ const ResumeView = () => {
       <hr />
       <div className="about">
         <h2 className="about">About Me</h2>
-        <p className="normalFont contentDiv">
-          {" "}
-          {resume.basicInfo.about} Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Quis facilis reiciendis aliquam dolorem numquam
-          magnam neque provident recusandae. Tempora, laboriosam!{" "}
-        </p>
+        <p className="normalFont contentDiv"> {resume.basicInfo.about}</p>
       </div>
       <hr />
       <div className="education">

@@ -1,11 +1,12 @@
 import { Button, Container, Grid } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setEducation } from "../../../features/setResumeSlice";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectResume, setEducation } from "../../../features/setResumeSlice";
 
 export const EducationBody = ({ step, setStep }) => {
   const dispatch = useDispatch();
+  const resume = useSelector(selectResume);
 
   const [Info, setInfo] = useState({
     institute: "",
@@ -15,6 +16,11 @@ export const EducationBody = ({ step, setStep }) => {
     year: "",
     percent: "",
   });
+
+  useEffect(() => {
+    setInfo(resume.education);
+  }, []);
+
   const onInputChange = (e) => {
     setInfo({ ...Info, [e.target.name]: e.target.value });
   };

@@ -1,11 +1,17 @@
 import { Button, Container, Grid } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setExperience } from "../../../features/setResumeSlice";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectResume, setExperience } from "../../../features/setResumeSlice";
 
 export const ExperienceBody = ({ step, setStep }) => {
   const dispatch = useDispatch();
+  const resume = useSelector(selectResume);
+
+  useEffect(() => {
+    setInfo(resume.experience);
+  }, []);
+
   const [Info, setInfo] = useState({
     jobTitle: "",
     cmpName: "",
