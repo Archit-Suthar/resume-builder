@@ -1,0 +1,25 @@
+.MuiContainer-root {
+  width: 100vw;
+  /* margin: 0; */
+  padding: 20px;
+  /* border: 1px solid black; */
+}
+@media screen and (max-width: 425px) {
+  .MuiGrid-justify-content-xs-space-between {
+    justify-content: space-around;
+  }
+  a.MuiButtonBase-root {
+    display: none;
+  }
+}
+MuiButtonBase-root {
+  font-size: larger;
+}
+.MuiTypography-root {
+  padding: 20px 0px;
+}
+.imgDiv {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+}
