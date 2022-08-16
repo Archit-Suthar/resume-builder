@@ -21,7 +21,8 @@ export const ProjectsBody = ({ step, setStep }) => {
     setInfo({ ...Info, [e.target.name]: e.target.value });
   };
 
-  const nextStep = () => {
+  const nextStep = (e) => {
+    e.preventDefault();
     dispatch(setProjects(Info));
     if (step != 6) setStep(step + 1);
   };
@@ -34,71 +35,75 @@ export const ProjectsBody = ({ step, setStep }) => {
       <Container>
         <h2>Projects</h2>
         <br />
-        <Grid container spacing={3}>
-          {/* row 1  */}
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="projTitle"
-              label="Project Title"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={Info.projTitle}
-              onChange={onInputChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="projURL"
-              label="Project URL"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={Info.projURL}
-              onChange={onInputChange}
-            />
-          </Grid>
+        <form onSubmit={nextStep}>
+          <Grid container spacing={3}>
+            {/* row 1  */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="projTitle"
+                label="Project Title"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.projTitle}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="projURL"
+                label="Project URL"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.projURL}
+                onChange={onInputChange}
+              />
+            </Grid>
 
-          {/* row 2  */}
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="projDsp"
-              label="Project Description"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={Info.projDsp}
-              onChange={onInputChange}
-            />
+            {/* row 2  */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="projDsp"
+                label="Project Description"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.projDsp}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
           </Grid>
-        </Grid>
-        <br />
+          {/* <br />
         <Button variant="outlined" color="primary" disabled>
           + Add Projects
-        </Button>
-        <br />
-        <br />
-        <div className="floater">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={backStep}
-            disabled={step <= 1}
-          >
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={nextStep}
-            disabled={step >= 7}
-          >
-            {step < 6 ? "Save & Next" : "Save & Finish"}
-          </Button>
-        </div>
+        </Button> */}
+          <br />
+          <br />
+          <div className="floater">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={backStep}
+              disabled={step <= 1}
+            >
+              Back
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={nextStep}
+              disabled={step >= 7}
+            >
+              {step < 6 ? "Save & Next" : "Save & Finish"}
+            </Button>
+          </div>
+        </form>
       </Container>
     </div>
   );

@@ -18,7 +18,7 @@ var options = {
   },
 };
 app.post("/create-pdf", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   pdf.create(pdfTemplate(req.body), options).toFile("resume.pdf", (err) => {
     // console.log(req);
     if (err) res.send(Promise.reject());

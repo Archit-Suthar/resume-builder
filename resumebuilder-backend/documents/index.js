@@ -1,5 +1,21 @@
 module.exports = (resume) => {
-  console.log(resume);
+  let str;
+  str = resume.skills.map(
+    (skill) =>
+      `<ul class="talent">
+            <li class="last">
+               ${skill}    
+            </li>
+        </ul>`
+  );
+  let newString = "";
+  str.forEach(myFunction);
+  function myFunction(item) {
+    newString += item;
+  }
+  //   console.log(newString);
+  // str = newS.replace("React", "kevaadsa");
+  //   console.log(resume);
   return `<!DOCTYPE html>
   <html>
   
@@ -243,9 +259,21 @@ module.exports = (resume) => {
                       <div class="yui-u">
                           <div class="contact-info">
                               <h3>${resume.basicInfo.mno}</h3>
-                              <h3><a href="mailto:${resume.basicInfo.email}">${resume.basicInfo.email}</a></h3>
-                              <h3><a href="#">${resume.basicInfo.github}</a></h3>
-                              <h3><a href="#">LinkedIn</a></h3>
+                              ${
+                                resume.basicInfo.email != undefined
+                                  ? `<h3><a href="mailto:${resume.basicInfo.email}">${resume.basicInfo.email}</a></h3>`
+                                  : ""
+                              }
+                              ${
+                                resume.basicInfo.github != undefined
+                                  ? `<h3><a href="#">${resume.basicInfo.github}</a></h3>`
+                                  : ""
+                              }
+                              ${
+                                resume.basicInfo.linked != undefined
+                                  ? `<h3><a href="${resume.basicInfo.linked}">${resume.basicInfo.linked}</a></h3>`
+                                  : ""
+                              }
   
   
                           </div>
@@ -272,19 +300,20 @@ module.exports = (resume) => {
                           </div>
                           <!--// .yui-gf -->
   
-                          <div class="yui-gf">
+                          ${
+                            resume.skills.length != 0
+                              ? `<div class="yui-gf">
                               <div class="yui-u first">
                                   <h2>Skills</h2>
+
                               </div>
                               <div class="yui-u">
-                              ${resume.skills.map((skill) => (
-                                `<ul class="talent">
-                                    <li class="last">${skill}</li>
-                                </ul>`
-                              ))}
+                                ${newString}
                                   
                               </div>
-                          </div>
+                          </div>`
+                              : `<div></div>`
+                          }
                           <!--// .yui-gf-->
   
                           <div class="yui-gf">
@@ -298,7 +327,9 @@ module.exports = (resume) => {
                                     <div class="job last">
                                       <h2>${resume.experience.cmpName}</h2>
                                       <h3>${resume.experience.jobTitle}</h3>
-                                      <h4>${resume.experience.sDate}-${resume.experience.eDate}</h4>
+                                      <h4>${resume.experience.sDate}-${
+    resume.experience.eDate
+  }</h4>
                                       <p>${resume.experience.jobDsp}</p>
                                   </div>
   
@@ -313,11 +344,37 @@ module.exports = (resume) => {
                               </div>
                               <div class="yui-u">
                                   <h2>${resume.education.institute}</h2>
-                                  <h3>${resume.education.studyField}&mdash; <strong>${resume.education.precent}</strong> </h3>
+                                  <h3>${
+                                    resume.education.studyField
+                                  }&mdash; <strong>${
+    resume.education.percent
+  }</strong> </h3>
                               </div>
                           </div>
                           <!--// .yui-gf -->
+                          <div class="yui-gf">
   
+                          <div class="yui-u first">
+                              <h2>Projects</h2>
+                          </div>
+                          <!--// .yui-u -->
+
+                          <div class="yui-u">
+                                <div class="job last">
+                                  <h2>${resume.projects.projTitle}</h2>
+                                  ${
+                                    resume.projects.projURL
+                                      ? `link : <a href="${resume.projects.projURL}">${resume.projects.projURL}</a>`
+                                      : ""
+                                  }
+                                  <h3>${resume.projects.projDsp}</h3>
+                              </div>
+
+                          </div>
+                          <!--// .yui-u -->
+                      </div>
+                      <!--// .yui-gf -->
+
                           <div class="yui-gf last">
                               <div class="yui-u first">
                                   <h2>Achievements</h2>
@@ -345,3 +402,12 @@ module.exports = (resume) => {
   
   </html>`;
 };
+
+// ${resume.skills.map(
+//     (skill) =>
+//       `<ul class="talent">
+//         <li class="last">
+//         ${skill}
+//         </li>
+//        </ul>`
+//   )}

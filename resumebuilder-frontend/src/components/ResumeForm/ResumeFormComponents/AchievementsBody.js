@@ -17,7 +17,8 @@ export const AchievementsBody = ({ step, setStep }) => {
 
   const [Info, setInfo] = useState("");
 
-  const nextStep = () => {
+  const nextStep = (e) => {
+    e.preventDefault();
     dispatch(setAchievements(Info));
     if (step != 6) setStep(step + 1);
   };
@@ -32,35 +33,38 @@ export const AchievementsBody = ({ step, setStep }) => {
 
         <h3>- Enter a brief introduction about your achievements</h3>
         <br />
-        <TextField
-          label="Achievements"
-          variant="filled"
-          color="primary"
-          fullWidth
-          focused
-          value={Info}
-          onChange={(e) => setInfo(e.target.value)}
-        />
-        <br />
-        <br />
-        <div className="floater">
-          <Button
-            variant="contained"
+        <form onSubmit={nextStep}>
+          <TextField
+            label="Achievements"
+            variant="filled"
             color="primary"
-            onClick={backStep}
-            disabled={step <= 1}
-          >
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={nextStep}
-            disabled={step >= 7}
-          >
-            {step < 6 ? "Save & Next" : "Save & Finish"}
-          </Button>
-        </div>
+            fullWidth
+            focused
+            value={Info}
+            onChange={(e) => setInfo(e.target.value)}
+            required
+          />
+          <br />
+          <br />
+          <div className="floater">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={backStep}
+              disabled={step <= 1}
+            >
+              Back
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={nextStep}
+              disabled={step >= 7}
+            >
+              {step < 6 ? "Save & Next" : "Save & Finish"}
+            </Button>
+          </div>
+        </form>
       </Container>
     </div>
   );

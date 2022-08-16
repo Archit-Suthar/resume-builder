@@ -22,7 +22,8 @@ export const ExperienceBody = ({ step, setStep }) => {
   const onInputChange = (e) => {
     setInfo({ ...Info, [e.target.name]: e.target.value });
   };
-  const nextStep = () => {
+  const nextStep = (e) => {
+    e.preventDefault();
     dispatch(setExperience(Info));
     if (step != 6) setStep(step + 1);
   };
@@ -44,94 +45,101 @@ export const ExperienceBody = ({ step, setStep }) => {
             </Button> 
             <br />*/}
         <br />
-
-        <Grid container spacing={3}>
-          {/* row 1  */}
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="jobTitle"
-              label="Job Title"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={Info.jobTitle}
-              onChange={onInputChange}
-            />
+        <form onSubmit={nextStep}>
+          <Grid container spacing={3}>
+            {/* row 1  */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="jobTitle"
+                label="Job Title"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.jobTitle}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="cmpName"
+                label="Company Name"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.cmpName}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="sDate"
+                label="Start Date (e.g. may-2020)"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.sDate}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="eDate"
+                label="End Date (e.g. may-2021 or Present)"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.eDate}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="jobDsp"
+                label="Job Description"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.jobDsp}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="cmpName"
-              label="Company Name"
-              variant="filled"
+          {/* <br />
+          <Button variant="outlined" color="primary" disabled>
+            + Add Experience
+          </Button> */}
+          <br />
+          <br />
+          <div className="floater">
+            <Button
+              variant="contained"
               color="primary"
-              fullWidth
-              focused
-              value={Info.cmpName}
-              onChange={onInputChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="sDate"
-              label="Start Date (e.g. may-2020)"
-              variant="filled"
+              onClick={backStep}
+              disabled={step <= 1}
+            >
+              Back
+            </Button>
+            <Button
+              type="submit"
+              variant="contained"
               color="primary"
-              fullWidth
-              focused
-              value={Info.sDate}
-              onChange={onInputChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="eDate"
-              label="End Date (e.g. may-2021 or Present)"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={Info.eDate}
-              onChange={onInputChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              name="jobDsp"
-              label="Job Description"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={Info.jobDsp}
-              onChange={onInputChange}
-            />
-          </Grid>
-        </Grid>
-        <br />
-        <Button variant="outlined" color="primary" disabled>
-          + Add Experience
-        </Button>
-        <br />
-        <br />
-        <div className="floater">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={backStep}
-            disabled={step <= 1}
-          >
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={nextStep}
-            disabled={step >= 7}
-          >
-            {step < 6 ? "Save & Next" : "Save & Finish"}
-          </Button>
-        </div>
+              // onClick={nextStep}
+              disabled={step >= 7}
+            >
+              {step < 6 ? "Save & Next" : "Save & Finish"}
+            </Button>
+          </div>
+        </form>
       </Container>
     </div>
   );

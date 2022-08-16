@@ -8,10 +8,6 @@ export const BasicInfoBody = ({ step, setStep }) => {
   const dispatch = useDispatch();
   const resume = useSelector(selectResume);
 
-  useEffect(() => {
-    setInfo(resume.basicInfo);
-  }, []);
-
   const [Info, setInfo] = useState({
     fullname: "",
     mno: "",
@@ -20,14 +16,21 @@ export const BasicInfoBody = ({ step, setStep }) => {
     linked: "",
     about: "",
   });
+
+  useEffect(() => {
+    setInfo(resume.basicInfo);
+  }, []);
+
   const onInputChange = (e) => {
     setInfo({ ...Info, [e.target.name]: e.target.value });
   };
 
-  const nextStep = () => {
+  const nextStep = (e) => {
+    e.preventDefault();
     dispatch(setBasicInfo(Info));
     if (step != 6) setStep(step + 1);
   };
+
   const backStep = () => {
     setStep(step - 1);
   };
@@ -37,102 +40,111 @@ export const BasicInfoBody = ({ step, setStep }) => {
       <Container>
         <h2>Basic Info</h2>
         <br />
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="fullname"
-              label="Full Name"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={resume.basicInfo.fullname}
-              onChange={onInputChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="mno"
-              label="Mobile No."
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={resume.basicInfo.mno}
-              onChange={onInputChange}
-            />
+        <form onSubmit={nextStep}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="fullname"
+                label="Full Name"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.fullname}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="mno"
+                label="Mobile No."
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.mno}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="title"
+                label="Title (e.g. Web Developer/CS Undergraduate)"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.title}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="email"
+                label="Email ID"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.email}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="linked"
+                label="LinkedIn Link"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.linked}
+                onChange={onInputChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="about"
+                label="About"
+                variant="filled"
+                color="primary"
+                fullWidth
+                focused
+                value={Info.about}
+                onChange={onInputChange}
+                required
+              />
+            </Grid>
           </Grid>
 
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="title"
-              label="Title (e.g. Web Developer)"
-              variant="filled"
+          <br />
+          <div className="floater">
+            <Button
+              variant="contained"
               color="primary"
-              fullWidth
-              focused
-              value={resume.basicInfo.title}
-              onChange={onInputChange}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="email"
-              label="Email ID"
-              variant="filled"
+              onClick={backStep}
+              disabled={step <= 1}
+            >
+              Back
+            </Button>
+            <Button
+              type="submit"
+              variant="contained"
               color="primary"
-              fullWidth
-              focused
-              value={resume.basicInfo.email}
-              onChange={onInputChange}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="linked"
-              label="LinkedIn Link"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={resume.basicInfo.linked}
-              onChange={onInputChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              name="about"
-              label="About"
-              variant="filled"
-              color="primary"
-              fullWidth
-              focused
-              value={resume.basicInfo.about}
-              onChange={onInputChange}
-            />
-          </Grid>
-        </Grid>
-        <br />
-        <div className="floater">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={backStep}
-            disabled={step <= 1}
-          >
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={nextStep}
-            disabled={step >= 7}
-          >
-            {step < 6 ? "Save & Next" : "Save & Finish"}
-          </Button>
-        </div>
+              disabled={step >= 7}
+              // onClick={nextStep}
+            >
+              {step < 6 ? "Save & Next" : "Save & Finish"}
+            </Button>
+          </div>
+        </form>
       </Container>
     </div>
   );
