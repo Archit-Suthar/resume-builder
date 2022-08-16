@@ -15,7 +15,9 @@ function App() {
   const handlePrint = async () => {
     await axios
       .post("http://localhost:4000/create-pdf", resume)
-      .then(() => axios.get("http://localhost:4000/", { responseType: "blob" }))
+      .then(() =>
+        axios.get("http://localhost:4000/get-pdf", { responseType: "blob" })
+      )
       .then((res) => {
         const pdfBlob = new Blob([res.data], { type: "apllication/pdf" });
         saveAs(pdfBlob, "MyResume.pdf");

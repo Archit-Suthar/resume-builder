@@ -17,6 +17,9 @@ var options = {
     height: "15mm",
   },
 };
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
 app.post("/create-pdf", (req, res) => {
   // console.log(req.body);
   pdf.create(pdfTemplate(req.body), options).toFile("resume.pdf", (err) => {
@@ -27,7 +30,7 @@ app.post("/create-pdf", (req, res) => {
   });
 });
 
-app.get("/", (req, res) => {
+app.get("/get-pdf", (req, res) => {
   res.sendFile(`${__dirname}/resume.pdf`);
 });
 
